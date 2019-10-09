@@ -9,7 +9,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
  
 // Include config file
-require_once "CONFIG/config.php";
+require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -94,11 +94,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    
-    <link href="CSS/styles.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
 </head>
 <body>
-    <!-- <div class="wrapper">
+    <div class="wrapper">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -117,34 +119,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
-    </div>     -->
-
-
-<form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-  <p class="login-text">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-lock fa-stack-1x"></i>
-    </span>
-  </p>
-  <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-  <input type="text" name="username" class="login-username" autofocus="true" required="true" placeholder="Username" value="<?php echo $username; ?>" />
-  <span class="help-block"><?php echo $username_err; ?></span>
-</div>
-
-<div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-  <input type="password" name="password" class="login-password" required="true" placeholder="Password" />
-  <span class="help-block"><?php echo $password_err; ?></span>
-</div> 
-
-  <input type="submit" name="submit" value="Login" class="login-submit" />
-
-
-<a href="register.php" class="login-forgot-pass">Sign Up Now</a>
-<div class="underlay-photo"></div>
-<div class="underlay-black"></div> 
-</form>
+    </div>    
 </body>
-
-
 </html>
